@@ -1,0 +1,61 @@
+<div class="container" style="margin-top:70px;">
+  <section class="vh-1" style="background-color: #f4f5f7;" *ngFor="let user of userProfile | async">
+    <!-- user api returns list -->
+    <div class="container py-5 h-1">
+      <div class="row d-flex justify-content-center align-items-center h-1">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body p-4"><!-- card body -->
+                  <h6>User Profile</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6>Username</h6>
+                      <p class="text-muted">{{ user.username }}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6>User Email</h6>
+                      <p class="text-muted">{{ user.email }}</p>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                          style="margin-right: 2vw;"
+                          type="submit" (click)="deleteUser()">Delete Profile
+                  </button>
+                  <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                          type="submit" (click)="btnEditUserClicked()">Edit Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" *ngIf="btnEditUser">
+                <h2>Edit User</h2>
+                <div class="form-group">
+                  <label for="password">New Password</label>
+                  <input type="password" id="password" name="password"
+                         class="form-control"
+                         formControlName="password" [ngClass]="{'error': isInvalid('password')}">
+                </div>
+                <div class="form-group">
+                  <label for="reEnterPassword">re-Enter Password</label>
+                  <input type="password" id="reEnterPassword" name="reEnterPassword"
+                         class="form-control" formControlName="reEnterPassword">
+                </div>
+                <span *ngIf="!passwordMatch()">Passwords don't match</span>
+                <button type="submit" *ngIf="!isIncomplete() && passwordMatch()"
+                        class="btn btn-primary">Submit
+                </button>
+              </form>
+
+            </div><!-- end card body -->
+          </div>
+        </div>
+      </div>
+    </div><!-- end container -->
+  </section>
+</div>
+

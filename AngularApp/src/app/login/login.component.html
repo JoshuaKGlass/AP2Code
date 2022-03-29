@@ -1,0 +1,35 @@
+<div id="mainContent" class="container">
+  <!-- The content half -->
+  <div id="loginContent" class="col-md-6">
+    <div class="login d-flex align-items-center py-5">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-7 mx-auto">
+            <h3 class="display-4">Sign In</h3>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group mb-3">
+                <input type="text" id="username" name="username" placeholder="username"
+                       formControlName="username" [ngClass]="{'error': isInvalid('username')}"
+                       class="form-control rounded-pill border-0 shadow-sm px-4">
+              </div>
+              <div class="form-group mb-3">
+                <input type="password" id="password" name="password" placeholder="password"
+                       formControlName="password" [ngClass]="{'error': isInvalid('password')}"
+                       class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+              </div>
+              <span *ngIf="isIncomplete()">you must complete all fields</span>
+              <button *ngIf="!isIncomplete()" type="submit"
+                      class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
+                Sign
+                in
+              </button>
+            </form>
+          </div>
+        </div>
+      </div><!-- End -->
+
+    </div>
+  </div><!-- End -->
+</div>

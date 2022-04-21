@@ -1,35 +1,66 @@
-<div id="mainContent" class="container">
-  <!-- The content half -->
-  <div id="loginContent" class="col-md-6">
-    <div class="login d-flex align-items-center py-5">
+<!--<div id="loginContent">-->
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 col-xl-7 mx-auto">
-            <h3 class="display-4">Sign In</h3>
+<!--  <div class="login">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
 
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-              <div class="form-group mb-3">
-                <input type="text" id="username" name="username" placeholder="username"
-                       formControlName="username" [ngClass]="{'error': isInvalid('username')}"
-                       class="form-control rounded-pill border-0 shadow-sm px-4">
-              </div>
-              <div class="form-group mb-3">
-                <input type="password" id="password" name="password" placeholder="password"
-                       formControlName="password" [ngClass]="{'error': isInvalid('password')}"
-                       class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
-              </div>
-              <span *ngIf="isIncomplete()">you must complete all fields</span>
-              <button *ngIf="!isIncomplete()" type="submit"
-                      class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
-                Sign
-                in
-              </button>
-            </form>
+<!--        <div class="col-lg-10 col-xl-7 mx-auto">-->
+<!--          <h3 class="display-2">Sign In</h3>-->
+
+<!--          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">-->
+<!--            <div class="form-group mb-3">-->
+<!--              <input type="text" id="username" name="username" placeholder="username"-->
+<!--                     formControlName="username" [ngClass]="{'error': isInvalid('username')}"-->
+<!--                     class="form-control rounded-pill border-0 shadow-sm px-4">-->
+<!--            </div>-->
+<!--            <div class="form-group mb-3">-->
+<!--              <input type="password" id="password" name="password" placeholder="password"-->
+<!--                     formControlName="password" [ngClass]="{'error': isInvalid('password')}"-->
+<!--                     class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">-->
+<!--            </div>-->
+<!--            <span *ngIf="isIncomplete()">you must complete all fields</span>-->
+<!--            <button *ngIf="!isIncomplete()" type="submit"-->
+<!--                    class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">-->
+<!--              Sign-->
+<!--              in-->
+<!--            </button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>&lt;!&ndash; End &ndash;&gt;-->
+<!--  </div>-->
+<!--</div>&lt;!&ndash; End &ndash;&gt;-->
+
+<!-- sign in section-->
+<section id="login" class="bg-light py-5 border-bottom">
+  <div class="container px-5 my-5">
+    <div class="row gx-5 justify-content-center">
+      <!-- sign in card-->
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-5 mb-xl-0">
+          <div class="card-body p-5">
+            <h1 class="display-3 fw-bolder">Sign In</h1>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <input type="text" id="username" name="username" placeholder="username"
+                     formControlName="username" [ngClass]="{'error': isInvalid('username')}"
+                     class="form-control rounded-pill border-0 shadow-sm px-4">
+            </div>
+            <div class="form-group mb-3">
+              <input type="password" id="password" name="password" placeholder="password"
+                     formControlName="password" [ngClass]="{'error': isInvalid('password')}"
+                     class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+            </div>
+            <span *ngIf="isIncomplete()">you must complete all fields</span>
+            <button *ngIf="!isIncomplete()" type="submit"
+                    class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
+              Sign
+              in
+            </button>
+          </form>
           </div>
         </div>
-      </div><!-- End -->
-
+      </div>
     </div>
-  </div><!-- End -->
-</div>
+  </div>
+</section>

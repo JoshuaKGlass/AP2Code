@@ -8,7 +8,6 @@ from functools import wraps
 import bcrypt
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 CORS(app)
 app.config["SECRET_KEY"] = "Coursework"
@@ -22,6 +21,7 @@ blacklist = db.blacklist
 @app.route("/")
 def index():
     return make_response(jsonify({'message': 'Welcome'}))
+
 
 # authentication method with wrapper decorator
 # tested

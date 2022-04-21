@@ -1,2 +1,154 @@
-<p>home works!</p>
+<!-- https://startbootstrap.com/template/business-frontpage reference to bootstrap template -->
+<header class="bg-dark py-5">
+  <div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+      <div class="col-lg-6">
+        <div class="text-center my-5">
+          <h1 class="display-5 fw-bolder text-white mb-2">Welcome to SimLabs</h1>
+          <p class="lead text-white-50 mb-4">An interactive tool brining Math to life!</p>
+          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-primary btn-lg px-4 me-sm-3" [routerLink]="['/register']">Get Started</a>
+            <a class="btn btn-outline-light btn-lg px-4" href="#projects">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="py-5 border-bottom" id="features">
+  <div class="container px-5 my-5">
+    <div class="row gx-5">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+
+        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+        <h2 class="h4 fw-bolder">Easy Explanations</h2>
+        <p>With Easy Explanations you can understand what is presented in the math formula and can full grasp
+          its implementation in mathematics.</p>
+        <a class="text-decoration-none" href="#project1">
+          Current Projects with Easy Explanations
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+        <h2 class="h4 fw-bolder">Interactive Graphic</h2>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+          probably just keep going until we run out of words.</p>
+        <a class="text-decoration-none" href="#project1">
+          Current Project with Graphic
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+        <h2 class="h4 fw-bolder">Quiz Available Too</h2>
+        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+          probably just keep going until we run out of words.</p>
+        <a class="text-decoration-none" href="#project1">
+          Current Project with Quiz
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project section-->
+<section id="projects" class="bg-light py-5 border-bottom">
+  <div class="container px-5 my-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bolder">Current Projects Available</h2>
+      <p class="lead mb-0">With easy explanations and quiz too</p>
+    </div>
+    <div class="row gx-5 justify-content-center">
+
+      <!-- Project card 1-->
+      <div id="project1" class="col-lg-6 col-xl-4">
+        <div class="card mb-5 mb-xl-0">
+          <div class="card-body p-5">
+            <div class="small text-uppercase fw-bold text-muted">Project 1 | Spring 2022</div>
+            <div class="mb-3">
+              <span class="display-5 fw-bold">Pythagoras Theorem</span>
+            </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                <strong>Easy Explanation of Theorem</strong>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Insight to Equation
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Interactive Graphic
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Quiz Yourself After
+              </li>
+            </ul>
+            <div class="d-grid"><a class="btn btn-outline-primary" [routerLink]="['/','maincontent']">Try me out!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project card 2-->
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-5 mb-xl-0">
+          <div class="card-body p-5">
+            <div class="small text-uppercase fw-bold text-muted">Project 2 | Coming Soon summer 2022</div>
+            <div class="mb-3">
+              <span class="display-5 fw-bold">Surface area</span>
+            </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                <strong>Explanation of Theorem</strong>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Insight to equation
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Interactive graphic
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project card 3-->
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-5 mb-xl-0">
+          <div class="card-body p-5">
+            <div class="small text-uppercase fw-bold text-muted">Project 3 | Coming Soon</div>
+            <div class="mb-3">
+              <span class="display-5 fw-bold">[Redacted]</span>
+            </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                <strong>Explanation of Theorem</strong>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Insight to equation
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check text-primary"></i>
+                Interactive graphic
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 

@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {MaincontentComponent} from "./maincontent/maincontent.component";
 import {UserprofileComponent} from "./userprofile/userprofile.component";
+import {QuizComponent} from "./quiz/quiz.component";
 
 
 // routes go here
@@ -32,7 +33,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserprofileComponent
-  }
+  },
+    {
+    path: 'quiz',
+    component: QuizComponent
+  },
 ];
 
 @NgModule({

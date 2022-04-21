@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class WebService {
-  //headers
+  //headers and session storage for admin purposes
   private admin: boolean = sessionStorage['admin'];
   private currentUser: string = '';
 
@@ -19,11 +19,10 @@ export class WebService {
 
   //todo:
   // implement bokeh
-  // user area
   // quiz area
   // search area
 
-  //add new user
+  //add new user profile
   addNewUser(newUser: any) {
     let newUserData = new FormData();
     newUserData.append("username", newUser.username);
@@ -36,7 +35,7 @@ export class WebService {
     });
   }
 
-  //delete profile
+  //delete user profile
   deleteProfile(id: any) {
     this.http.delete('http://127.0.0.1:5000/api/v1/users/' + id).subscribe(res => {
       console.log(res);
@@ -48,6 +47,7 @@ export class WebService {
   }
 
   //https://www.sohamkamani.com/blog/javascript-localstorage-with-ttl-expiry/
+  //login func, set headers. redirects to home
   async getLogin(headerOptions: { headers: HttpHeaders }) {
     this.http.get('http://localhost:5000/api/v1/login', headerOptions).subscribe(res => {
       console.log(res);
@@ -97,7 +97,7 @@ export class WebService {
     return this.currentUser
   }
 
-  //checks if user is logged in
+  //checks if user is logged in, returns session token, either null or set by login func
   isLoggedIn() {
     let h = sessionStorage['token']
     if (h == null) {
@@ -125,7 +125,7 @@ export class WebService {
     return this.admin
   }
 
-  //logout of application
+  //logout of application, clears session storage and http headers
   logOut() {
     this.http.get('http://localhost:5000/api/v1/logout', {headers: this.headers}).subscribe(res => {
       console.log(res);

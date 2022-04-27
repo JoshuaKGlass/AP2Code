@@ -8,7 +8,12 @@ from functools import wraps
 import bcrypt
 from flask_cors import CORS
 
-app = Flask(__name__)
+import numpy as np
+from bokeh.layouts import column, row
+from bokeh.models import CustomJS, Slider
+from bokeh.plotting import ColumnDataSource, figure, show
+
+app = Flask(__name__, template_folder='../AngularApp/src/app/maincontent')
 CORS(app)
 app.config["SECRET_KEY"] = "Coursework"
 
@@ -18,9 +23,61 @@ users = db.userCollection
 blacklist = db.blacklist
 
 
-@app.route("/")
+@app.route('/', methods=['GET'])
 def index():
-    return make_response(jsonify({'message': 'Welcome'}))
+    # # pull a new session from a running Bokeh server
+    # with pull_session(url="http://localhost:5006/sliders") as session:
+    #
+    #     # update or customize that session
+    #     session.document.roots[0].children[1].title.text = "Special sliders for a specific user!"
+    #
+    #     # generate a script to load the customized session
+    #     script = server_session(session_id=session.id, url='http://localhost:5006/sliders')
+    #
+    #     # use the script in the rendered page
+    #     return make_response(jsonify({'message': script}))
+
+    x = np.linspace(0, 10, 500)
+    y = np.sin(x)
+
+    source = ColumnDataSource(data=dict(x=x, y=y))
+
+    plot = figure(y_range=(-10, 10), width=400, height=400)
+
+    plot.line('x', 'y', source=source, line_width=3, line_alpha=0.6)
+
+    amp_slider = Slider(start=0.1, end=10, value=1, step=.1, title="Amplitude")
+    freq_slider = Slider(start=0.1, end=10, value=1, step=.1, title="Frequency")
+    phase_slider = Slider(start=0, end=6.4, value=0, step=.1, title="Phase")
+    offset_slider = Slider(start=-5, end=5, value=0, step=.1, title="Offset")
+
+    callback = CustomJS(
+        args=dict(source=source, amp=amp_slider, freq=freq_slider, phase=phase_slider, offset=offset_slider),
+        code="""
+        const data = source.data;
+        const A = amp.value;
+        const k = freq.value;
+        const phi = phase.value;
+        const B = offset.value;
+        const x = data['x']
+        const y = data['y']
+        for (let i = 0; i < x.length; i++) {
+            y[i] = B + A*Math.sin(k*x[i]+phi);
+        }
+        source.change.emit();
+    """)
+
+    amp_slider.js_on_change('value', callback)
+    freq_slider.js_on_change('value', callback)
+    phase_slider.js_on_change('value', callback)
+    offset_slider.js_on_change('value', callback)
+
+    layout = row(
+        plot,
+        column(amp_slider, freq_slider),
+    )
+
+    return show(layout)
 
 
 # authentication method with wrapper decorator
@@ -180,7 +237,7 @@ def add_new_user():
 
 
 # tested, gets single user account
-@app.route("/api/v1/users/<string:u_id>", methods=["GET"])  # needs testing
+@app.route("/api/v1/users/<string:u_id>", methods=["GET"])
 @valid_id
 def get_user_profile(u_id):
     data_to_return = []

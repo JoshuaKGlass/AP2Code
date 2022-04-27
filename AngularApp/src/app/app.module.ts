@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { MaincontentComponent } from './maincontent/maincontent.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ExponentialComponent } from './exponential/exponential.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     QuizComponent,
     MaincontentComponent,
     UserprofileComponent,
+    ExponentialComponent,
   ],
   imports: [
     BrowserModule,

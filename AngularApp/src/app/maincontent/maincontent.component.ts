@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WebService} from "../web.service";
 
 @Component({
   selector: 'app-maincontent',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaincontentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public webService: WebService) { }
 
   ngOnInit(): void {
+
   }
+
 
 }
